@@ -31,7 +31,7 @@ source venv/bin/activate
 
 ## Basic Usage:
 
-```Python
+```python
 from self_heal import SelfHealingModel
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import load_iris
@@ -53,3 +53,34 @@ healing_model.train(X_train, y_train)
 healing_model.monitor_and_retrain(X_val, y_val)
 ```
 
+## Class Overview:
+
+SelfHealingModel(model, metric, threshold)
+
+    model: Any ML model with .fit() and .predict() methods
+
+    metric: A function like accuracy_score(y_true, y_pred)
+
+    threshold: Float between 0–1 to decide when to retrain
+
+Methods:
+
+    .train(X, y): Trains the model
+
+    .evaluate(X, y): Returns performance score
+
+    .monitor_and_retrain(X_val, y_val): Retrains if performance < threshold
+
+  ## Project Structure:
+  
+```bash
+self-healing-ml/
+├── src/
+│   └── self_heal.py     # Core self-healing logic
+├── examples/            # Example usage scripts (optional)
+├── requirements.txt
+└── README.md
+```
+
+## License:
+This project is licensed under the MIT License. See the LICENSE file for more details.
